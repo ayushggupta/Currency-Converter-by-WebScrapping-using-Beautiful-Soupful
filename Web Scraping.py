@@ -1,36 +1,14 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import bs4
 import requests
 res= requests.get('https://www.x-rates.com/table/?from=USD&amount=1')
 import lxml
 import pandas as pd
-
-
-# In[2]:
-
-
 bsoup=bs4.BeautifulSoup(res.text,'html')
-
-
-# In[3]:
-
-
 table_required= bsoup.find("table",{"class":"tablesorter ratesTable"})
-
-
-# In[4]:
-
-
 import csv
 with open('mycsv.xlsx','w',newline='') as f:
     thewriter =csv.writer(f)
-    
-    thewriter.writerow(['currency_of_country','in_1_USD'])
+        thewriter.writerow(['currency_of_country','in_1_USD'])
     
     for move in table_required.findAll('tbody'):
         listnew=[]
@@ -46,10 +24,6 @@ with open('mycsv.xlsx','w',newline='') as f:
     
     
     
-
-
-# In[8]:
-
 
 with open('mycsv.xlsx','r',newline='') as f:
     lines =f.readlines()
@@ -69,92 +43,3 @@ with open('mycsv.xlsx','r',newline='') as f:
     temp=float(c[currency_in_which_to_convert])
     print(amount ,currency_to_convert," in ",currency_in_which_to_convert,' = ',temp*amount/temp_1)
   
-    
-    
-    
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-    
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
